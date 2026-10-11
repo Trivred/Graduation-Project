@@ -1,0 +1,101 @@
+/* ================= HEADER GREEN PRO ================= */
+.public-header{
+    background:#145c32; /* 🔥 أخضر احترافي */
+    padding:12px 40px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    position:sticky;
+    top:0;
+    z-index:1000;
+    box-shadow:0 4px 15px rgba(0,0,0,0.08);
+}
+
+/* Logo */
+.brand span{
+    color:#fff;
+    font-weight:700;
+}
+
+/* روابط */
+.public-nav a{
+    color:#e0e0e0;
+    text-decoration:none;
+    transition:0.3s;
+}
+
+.public-nav a:hover{
+    color:#fff;
+}
+
+/* active */
+.public-nav .active{
+    color:#fff;
+    font-weight:600;
+}
+
+/* underline احترافي */
+.public-nav a{
+    position:relative;
+}
+
+.public-nav a::after{
+    content:'';
+    position:absolute;
+    bottom:-5px;
+    left:0;
+    width:0;
+    height:2px;
+    background:#A5D6A7;
+    transition:0.3s;
+}
+
+.public-nav a:hover::after,
+.public-nav .active::after{
+    width:100%;
+}
+
+/* Language */
+.lang-switch a{
+    background:rgba(255,255,255,0.15);
+    color:#fff;
+}
+
+.lang-switch .active{
+    background:#fff;
+    color:#145c32;
+}
+
+/* زر المينيو */
+.menu-toggle{
+    display:none;
+    font-size:24px;
+    background:none;
+    border:none;
+    cursor:pointer;
+}
+
+/* Responsive */
+@media(max-width:900px){
+
+    .menu-toggle{
+        display:block;
+    }
+
+    .public-nav{
+        position:absolute;
+        top:70px;
+        left:0;
+        width:100%;
+        background:#fff;
+        flex-direction:column;
+        gap:15px;
+        padding:20px;
+        display:none;
+        border-top:1px solid #eee;
+    }
+
+    .public-nav.show{
+        display:flex;
+    }
+}

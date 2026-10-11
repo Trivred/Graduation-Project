@@ -1,0 +1,521 @@
+/* =========================================================
+   Admin Unified Styles
+   Purpose: move repeated page design out of PHP pages.
+   ========================================================= */
+:root{
+  --admin-bg:#eef3f1;
+  --admin-surface:#ffffff;
+  --admin-border:#e3e9e6;
+  --admin-soft:#f6faf8;
+  --admin-text:#123c2f;
+  --admin-muted:#60756a;
+  --admin-green:#1b4332;
+  --admin-green-2:#2e7d32;
+  --admin-red:#dc2626;
+  --admin-yellow:#f59e0b;
+  --admin-blue:#0d47a1;
+  --shadow-soft:0 12px 28px rgba(0,0,0,.06);
+  --shadow-strong:0 18px 40px rgba(18,60,47,.16);
+}
+
+body{background:var(--admin-bg);font-family:'Segoe UI',Tahoma,sans-serif;color:#183f33;}
+.admin-structured-page{direction:rtl;}
+.admin-structured-page *{box-sizing:border-box;}
+.admin-structured-page .fw-black{font-weight:1000;}
+
+/* ---------- Shared hero / actions ---------- */
+.admin-structured-page .page-hero,
+.admin-structured-page .hero,
+.admin-structured-page .report-hero{
+  background:linear-gradient(135deg,#123c2f,#2e7d32);
+  color:#fff;border-radius:26px;padding:24px;margin-bottom:20px;
+  box-shadow:var(--shadow-strong);display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;
+}
+.admin-structured-page .page-hero h3,
+.admin-structured-page .hero h2,
+.admin-structured-page .report-hero h3{margin:0;font-size:28px;font-weight:1000;}
+.admin-structured-page .page-hero p,
+.admin-structured-page .hero p,
+.admin-structured-page .report-hero p{margin:6px 0 0;opacity:.92;}
+.admin-structured-page .hero-actions{display:flex;gap:10px;flex-wrap:wrap;align-items:center;}
+
+.admin-structured-page .btn-soft,
+.admin-structured-page .action-btn,
+.admin-structured-page .report-action{
+  border:none;border-radius:15px;padding:11px 16px;font-weight:900;text-decoration:none;
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;transition:.25s;cursor:pointer;
+}
+.admin-structured-page .btn-soft:hover,
+.admin-structured-page .action-btn:hover,
+.admin-structured-page .report-action:hover{transform:translateY(-2px);}
+.admin-structured-page .btn-export,.admin-structured-page .action-success{background:#fff;color:#123c2f;}
+.admin-structured-page .btn-report,.admin-structured-page .action-dark{background:#0f3b2f;color:#fff;}
+.admin-structured-page .btn-refresh,.admin-structured-page .btn-reset{background:#e3f2fd;color:#0d47a1;}
+
+/* ---------- Cards / Stats ---------- */
+.admin-structured-page .stats,
+.admin-structured-page .stats-grid,
+.admin-dashboard-page .row.g-4.mb-4:first-of-type{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-bottom:16px;}
+.admin-users-page .stats-grid{grid-template-columns:repeat(3,minmax(0,1fr));}
+.admin-dashboard-page .row.g-4.mb-4:first-of-type{grid-template-columns:repeat(4,minmax(0,1fr));}
+.admin-dashboard-page .row.g-4.mb-4:first-of-type>[class*="col-"]{width:100%;max-width:none;padding:0;}
+.admin-structured-page .stat-card,
+.admin-structured-page .summary-card,
+.admin-structured-page .report-card,
+.admin-dashboard-page .chart-card,
+.admin-dashboard-page .table-card,
+.admin-crud-page .table-card,
+.admin-users-page .table-card{
+  background:var(--admin-surface);border:1px solid var(--admin-border);border-radius:20px;padding:17px;box-shadow:var(--shadow-soft);
+}
+.admin-structured-page .stat-card span,
+.admin-structured-page .stat-card .stat-label{display:block;color:#667b70;font-weight:800;}
+.admin-structured-page .stat-card b,
+.admin-structured-page .stat-card .stat-value{font-size:28px;color:#123c2f;font-weight:1000;}
+
+/* ---------- Search / toolbar ---------- */
+.admin-structured-page .toolbar,
+.admin-structured-page .filter-bar,
+.admin-structured-page .actions-row,
+.admin-structured-page .report-actions{
+  display:flex;gap:10px;flex-wrap:wrap;margin-bottom:18px;align-items:center;
+}
+.admin-structured-page .search-box,
+.admin-structured-page .smart-input,
+.admin-structured-page .year-select{
+  flex:1;min-width:260px;padding:12px 16px;border:1px solid #d9e7df;border-radius:16px;outline:none;background:#fff;
+}
+.admin-structured-page .search-box:focus,
+.admin-structured-page .smart-input:focus,
+.admin-structured-page .year-select:focus{border-color:#2e7d32;box-shadow:0 0 0 4px rgba(46,125,50,.12);}
+
+/* ---------- Tables ---------- */
+.admin-structured-page .table-card{overflow:hidden;}
+.admin-structured-page .table{margin-bottom:0;}
+.admin-structured-page .sortable-table th{cursor:pointer;user-select:none;white-space:nowrap;background:#f8faf9;color:#123c2f;font-weight:1000;}
+.admin-structured-page .sort-icons{font-size:11px;margin-right:6px;opacity:.9;}
+.admin-structured-page .sortable-table th[data-sortable="false"]{cursor:default;}
+.admin-structured-page .sortable-table th.sorted-asc .sort-icons::after{content:' ▲';}
+.admin-structured-page .sortable-table th.sorted-desc .sort-icons::after{content:' ▼';}
+.admin-structured-page .cell-long,.admin-structured-page .desc,.admin-structured-page .symptoms{max-width:360px;white-space:normal;line-height:1.8;}
+
+/* ---------- Badges and buttons ---------- */
+.admin-structured-page .badge-soft,.admin-structured-page .badge-geo,.admin-structured-page .year-badge,.admin-structured-page .count-badge,.admin-structured-page .date-badge,
+.admin-structured-page .hazard-badge,.admin-structured-page .level,.admin-structured-page .badge-rarity,.admin-structured-page .badge-status,.admin-structured-page .role-badge{
+  display:inline-flex;align-items:center;justify-content:center;gap:6px;border-radius:999px;padding:7px 12px;font-weight:900;font-size:12px;margin:2px;
+}
+.admin-structured-page .badge-geo{background:#e8f5e9;color:#1b5e20;}
+.admin-structured-page .year-badge,.admin-structured-page .date-badge{background:#eef7f2;color:#1b4332;}
+.admin-structured-page .count-badge{background:#e3f2fd;color:#0d47a1;}
+.admin-structured-page .hazard-badge,.admin-structured-page .level{background:#ffebee;color:#b71c1c;}
+.admin-structured-page .badge-rarity{background:#e3f2fd;color:#0d47a1;}
+.admin-structured-page .badge-status{background:#fff3e0;color:#e65100;}
+.admin-structured-page .badge-green{background:#e8f5e9;color:#1b5e20;}
+.admin-structured-page .badge-gray{background:#eef2f5;color:#455a64;}
+.admin-structured-page .role-badge.admin{background:#fff3e0;color:#e65100;}
+.admin-structured-page .role-badge.user{background:#e8f5e9;color:#1b5e20;}
+.admin-structured-page .badge-soft.high{background:#ffebee;color:#b71c1c;}
+.admin-structured-page .badge-soft.medium{background:#fff8e1;color:#9a6700;}
+.admin-structured-page .badge-soft.low{background:#e8f5e9;color:#1b5e20;}
+
+.admin-structured-page .btn-edit,.admin-structured-page .btn-delete,.admin-structured-page .icon-btn{
+  border:none;border-radius:12px;min-width:38px;min-height:38px;display:inline-flex;align-items:center;justify-content:center;
+  margin:2px;text-decoration:none;transition:.25s;font-weight:900;cursor:pointer;padding:8px 11px;
+}
+.admin-structured-page .btn-edit,.admin-structured-page .btn-promote{background:#e8f5e9;color:#1b5e20;}
+.admin-structured-page .btn-delete,.admin-structured-page .btn-trash{background:#ffebee;color:#c62828;}
+.admin-structured-page .btn-demote{background:#e3f2fd;color:#0d47a1;}
+.admin-structured-page .btn-edit:hover,.admin-structured-page .btn-delete:hover,.admin-structured-page .icon-btn:hover{transform:translateY(-2px);}
+
+/* ---------- Modals ---------- */
+.admin-structured-page .modal,
+.admin-structured-page .modal-box{display:none;position:fixed;z-index:9999;inset:0;background:rgba(0,0,0,.45);align-items:center;justify-content:center;padding:18px;}
+.admin-structured-page .modal.is-open,
+.admin-structured-page .modal-box.is-open{display:flex;}
+.admin-structured-page .modal-content-custom,
+.admin-structured-page .modal-card{background:#fff;border-radius:22px;padding:22px;width:min(560px,96vw);box-shadow:0 20px 55px rgba(0,0,0,.18);}
+.admin-structured-page .modal-content-custom input,
+.admin-structured-page .modal-content-custom textarea,
+.admin-structured-page .modal-card input,
+.admin-structured-page .modal-card textarea,
+.admin-structured-page .modal-card select{width:100%;border:1px solid #dce8e2;border-radius:14px;padding:11px 13px;margin-bottom:10px;outline:none;}
+.admin-structured-page .save-btn{width:100%;border:none;border-radius:14px;padding:12px;background:#1b4332;color:#fff;font-weight:1000;}
+.admin-structured-page .close{float:left;cursor:pointer;font-size:24px;font-weight:1000;}
+
+/* ---------- Admin dashboard ---------- */
+.admin-dashboard-page .stat-card{cursor:pointer;transition:.25s;}
+.admin-dashboard-page .stat-card:hover{transform:translateY(-4px);}
+.admin-dashboard-page .label{color:#60756a;font-weight:800;font-size:13px;}
+.admin-dashboard-page .value{font-size:30px;font-weight:1000;color:#123c2f;}
+.admin-dashboard-page .icon{width:46px;height:46px;border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:22px;}
+.admin-dashboard-page .icon-green{background:#e8f5e9;color:#1b5e20;}.admin-dashboard-page .icon-red{background:#ffebee;color:#c62828;}.admin-dashboard-page .icon-yellow{background:#fff8e1;color:#9a6700;}.admin-dashboard-page .icon-blue{background:#e3f2fd;color:#0d47a1;}
+.admin-dashboard-page .smart-card{background:#fff;border-radius:20px;padding:18px;border:1px solid var(--admin-border);box-shadow:var(--shadow-soft);height:100%;border-right:6px solid #2e7d32;}
+.admin-dashboard-page .smart-card.critical{border-right-color:#d32f2f;}.admin-dashboard-page .smart-card.warning{border-right-color:#f9a825;}.admin-dashboard-page .smart-card.info{border-right-color:#1976d2;}.admin-dashboard-page .smart-card.success{border-right-color:#2e7d32;}
+.admin-dashboard-page .smart-title{font-weight:1000;color:#123c2f;}.admin-dashboard-page .smart-msg{color:#60756a;margin:10px 0;line-height:1.7;}.admin-dashboard-page .smart-link{font-weight:900;text-decoration:none;color:#1b4332;}
+.admin-dashboard-page .toast-admin{position:fixed;left:22px;bottom:22px;background:#123c2f;color:#fff;padding:14px 18px;border-radius:14px;box-shadow:var(--shadow-strong);opacity:0;transform:translateY(20px);transition:.35s;z-index:9999;font-weight:900;}
+.admin-dashboard-page .toast-admin.show{opacity:1;transform:translateY(0);}
+
+/* ---------- Risk areas ---------- */
+.admin-risk-areas-page .filter-btn{border:none;padding:10px 17px;border-radius:999px;background:#e6f0ea;cursor:pointer;font-weight:900;color:#1b4332;}
+.admin-risk-areas-page .filter-btn.active{background:#1b4332;color:#fff;}
+.admin-risk-areas-page .widgets-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;}
+.admin-risk-areas-page .widget-box{background:#fff;border-radius:22px;padding:20px;border:1px solid var(--admin-border);box-shadow:var(--shadow-soft);transition:.25s;position:relative;overflow:hidden;}
+.admin-risk-areas-page .widget-box:hover{transform:translateY(-5px);}
+.admin-risk-areas-page .widget-box::before{content:"";position:absolute;right:0;top:0;width:7px;height:100%;background:var(--riskColor,#2e7d32);}
+.admin-risk-areas-page .widget-title{font-size:18px;font-weight:1000;color:#123c2f;display:flex;gap:8px;align-items:center;}
+.admin-risk-areas-page .badge-risk{display:inline-block;margin-top:10px;padding:7px 13px;border-radius:999px;color:#fff;font-weight:900;background:var(--riskColor,#2e7d32);}
+.admin-risk-areas-page .stats-row{display:flex;justify-content:space-between;gap:10px;margin-top:16px;}
+.admin-risk-areas-page .stat-mini{text-align:center;background:#f8faf9;border-radius:14px;padding:10px;flex:1;}
+.admin-risk-areas-page .stat-mini span{display:block;font-size:20px;font-weight:1000;color:#123c2f;}
+.admin-risk-areas-page .details-btn{margin-top:15px;background:#1b4332;color:#fff;border:none;padding:11px;border-radius:12px;width:100%;font-weight:900;}
+.admin-risk-areas-page .details-box{max-height:0;overflow:hidden;transition:.35s;}
+.admin-risk-areas-page .details-box.open{max-height:1200px;margin-top:15px;}
+.admin-risk-areas-page .details-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.admin-risk-areas-page .detail-card{background:#f8faf9;padding:12px;border-radius:12px;border:1px solid #e6ecea;font-size:13px;line-height:1.8;}
+.admin-risk-areas-page .solution{grid-column:span 2;background:#eef7f2;border-right:4px solid #1b4332;}
+.admin-risk-areas-page .empty{background:#fff;border-radius:18px;padding:24px;text-align:center;color:#60756a;font-weight:900;}
+
+/* ---------- Reports ---------- */
+.admin-reports-page .report-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin-bottom:20px;}
+.admin-reports-page .report-card h5{font-weight:1000;color:#123c2f;}.admin-reports-page .report-card p{color:#60756a;margin:8px 0 0;}.admin-reports-page .report-card .num{font-size:30px;font-weight:1000;color:#1b4332;}
+.admin-reports-page .report-section{background:#fff;border-radius:22px;border:1px solid var(--admin-border);box-shadow:var(--shadow-soft);padding:18px;margin-bottom:16px;}
+.admin-reports-page .section-title{font-size:19px;font-weight:1000;color:#123c2f;margin-bottom:12px;}
+@media print{.admin-sidebar,.navbar,.report-actions,.page-hero a,.page-hero button{display:none!important}.content-wrapper{margin:0!important;padding:0!important}.report-section,.report-card{break-inside:avoid;box-shadow:none!important}.admin-structured-page{background:#fff!important}}
+
+/* ---------- Alerts ---------- */
+.admin-alerts-page .alert-card{background:#fff;border-radius:20px;border:1px solid var(--admin-border);box-shadow:var(--shadow-soft);padding:16px;margin-bottom:14px;border-right:7px solid var(--alertColor,#2e7d32);}
+.admin-alerts-page .alert-card.critical{--alertColor:#d32f2f}.admin-alerts-page .alert-card.warning{--alertColor:#f9a825}.admin-alerts-page .alert-card.info{--alertColor:#1976d2}.admin-alerts-page .alert-card.success{--alertColor:#2e7d32}
+
+@media(max-width:992px){
+  .admin-dashboard-page .row.g-4.mb-4:first-of-type,.admin-structured-page .stats,.admin-structured-page .stats-grid,.admin-risk-areas-page .widgets-grid,.admin-reports-page .report-grid{grid-template-columns:1fr 1fr;}
+}
+@media(max-width:650px){
+  .admin-dashboard-page .row.g-4.mb-4:first-of-type,.admin-structured-page .stats,.admin-structured-page .stats-grid,.admin-risk-areas-page .widgets-grid,.admin-reports-page .report-grid{grid-template-columns:1fr;}
+  .admin-structured-page .page-hero,.admin-structured-page .hero,.admin-structured-page .report-hero{align-items:flex-start;}
+  .admin-structured-page .search-box,.admin-structured-page .smart-input,.admin-structured-page .year-select{min-width:100%;}
+}
+
+
+/* =========================================================
+   إضافات تثبيت تنسيق صفحات الأدمن بعد فصل الملفات
+   ========================================================= */
+.admin-body .admin-content{color:#123c2f;}
+.admin-structured-page a{transition:.2s ease;}
+.admin-structured-page .content-wrapper{
+    width:100%;
+    max-width:100%;
+    margin:0;
+}
+
+.admin-structured-page .page-head,
+.admin-structured-page .dashboard-hero,
+.admin-structured-page .alerts-hero,
+.admin-structured-page .report-hero{
+    background:linear-gradient(135deg,#ffffff 0%,#eef8f1 100%);
+    border:1px solid var(--admin-border);
+    border-radius:24px;
+    padding:22px;
+    margin-bottom:22px;
+    box-shadow:var(--shadow-soft);
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:16px;
+    flex-wrap:wrap;
+}
+
+.admin-structured-page .page-head h3,
+.admin-structured-page .dashboard-hero h2,
+.admin-structured-page .alerts-hero h2,
+.admin-structured-page .report-hero h2{
+    margin:0;
+    color:#123c2f;
+    font-weight:1000;
+}
+
+.admin-structured-page .page-head p,
+.admin-structured-page .hero-subtitle,
+.admin-structured-page .alerts-hero p,
+.admin-structured-page .report-hero p{
+    margin:6px 0 0;
+    color:#60756a;
+    font-weight:700;
+    line-height:1.8;
+}
+
+.admin-structured-page .btn-soft,
+.admin-structured-page .btn-admin-action,
+.admin-structured-page .btn-report,
+.admin-structured-page .btn-export{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    border:0;
+    text-decoration:none;
+    background:#1b4332;
+    color:#fff;
+    border-radius:14px;
+    padding:11px 16px;
+    font-weight:1000;
+    box-shadow:0 10px 22px rgba(27,67,50,.16);
+    cursor:pointer;
+}
+
+.admin-structured-page .btn-soft:hover,
+.admin-structured-page .btn-admin-action:hover,
+.admin-structured-page .btn-report:hover,
+.admin-structured-page .btn-export:hover{
+    color:#fff;
+    transform:translateY(-2px);
+    background:#123c2f;
+}
+
+.admin-structured-page .btn-soft.secondary,
+.admin-structured-page .btn-admin-action.secondary{background:#e6f0ea;color:#123c2f;box-shadow:none;}
+.admin-structured-page .btn-soft.secondary:hover,
+.admin-structured-page .btn-admin-action.secondary:hover{background:#dce9e2;color:#123c2f;}
+
+.admin-dashboard-page .quick-actions,
+.admin-alerts-page .quick-actions{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    flex-wrap:wrap;
+}
+
+.admin-dashboard-page .status-panel,
+.admin-alerts-page .status-panel{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    flex-wrap:wrap;
+}
+
+.admin-dashboard-page .status-pill,
+.admin-alerts-page .status-pill,
+.admin-structured-page .badge-soft,
+.admin-structured-page .filter-chip{
+    display:inline-flex;
+    align-items:center;
+    gap:7px;
+    border:1px solid #dce8e2;
+    background:#f8faf9;
+    color:#123c2f;
+    padding:8px 12px;
+    border-radius:999px;
+    font-weight:900;
+    font-size:13px;
+}
+
+.admin-dashboard-page .status-pill.success,
+.admin-alerts-page .filter-chip.success{background:#e8f5e9;color:#1b5e20;border-color:#c8e6c9;}
+.admin-dashboard-page .status-pill.warning,
+.admin-alerts-page .filter-chip.warning{background:#fff8e1;color:#8a5a00;border-color:#ffe0a3;}
+.admin-dashboard-page .status-pill.danger,
+.admin-dashboard-page .status-pill.critical,
+.admin-alerts-page .filter-chip.danger{background:#ffebee;color:#b71c1c;border-color:#ffcdd2;}
+.admin-dashboard-page .status-pill.info,
+.admin-alerts-page .filter-chip.info{background:#e3f2fd;color:#0d47a1;border-color:#bbdefb;}
+
+.admin-dashboard-page .smart-card.danger{border-right-color:#d32f2f;}
+.admin-dashboard-page .smart-card.critical{border-right-color:#d32f2f;}
+.admin-dashboard-page .smart-card.warning{border-right-color:#f9a825;}
+.admin-dashboard-page .smart-card.info{border-right-color:#1976d2;}
+.admin-dashboard-page .smart-card.success{border-right-color:#2e7d32;}
+
+.admin-dashboard-page .chart-card,
+.admin-risk-dashboard-page .chart-card{
+    background:#fff;
+    border:1px solid var(--admin-border);
+    border-radius:22px;
+    padding:18px;
+    box-shadow:var(--shadow-soft);
+    min-height:320px;
+}
+
+.admin-dashboard-page canvas,
+.admin-risk-dashboard-page canvas{max-height:320px;}
+
+.admin-alerts-page .summary-grid,
+.admin-alerts-page .alerts-summary{
+    display:grid;
+    grid-template-columns:repeat(4,minmax(0,1fr));
+    gap:16px;
+    margin-bottom:20px;
+}
+
+.admin-alerts-page .summary-card{
+    background:#fff;
+    border:1px solid var(--admin-border);
+    border-radius:20px;
+    padding:18px;
+    box-shadow:var(--shadow-soft);
+}
+
+.admin-alerts-page .summary-card .num,
+.admin-alerts-page .summary-card h3{
+    font-size:30px;
+    font-weight:1000;
+    color:#123c2f;
+    margin:0;
+}
+
+.admin-alerts-page .summary-card .txt,
+.admin-alerts-page .summary-card p{
+    margin:6px 0 0;
+    color:#60756a;
+    font-weight:800;
+}
+
+.admin-alerts-page .filters-row{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+    margin:0 0 18px;
+}
+
+.admin-alerts-page .filter-chip{
+    text-decoration:none;
+    cursor:pointer;
+}
+
+.admin-alerts-page .filter-chip.active,
+.admin-alerts-page .filter-chip:hover{
+    background:#1b4332;
+    color:#fff;
+    border-color:#1b4332;
+}
+
+.admin-alerts-page .alert-card.danger,
+.admin-alerts-page .alert-card.critical{--alertColor:#d32f2f;}
+.admin-alerts-page .alert-card.warning{--alertColor:#f9a825;}
+.admin-alerts-page .alert-card.info{--alertColor:#1976d2;}
+.admin-alerts-page .alert-card.success{--alertColor:#2e7d32;}
+
+.admin-alerts-page .alert-head{
+    display:flex;
+    align-items:flex-start;
+    justify-content:space-between;
+    gap:14px;
+    margin-bottom:12px;
+}
+
+.admin-alerts-page .alert-title{font-size:17px;font-weight:1000;color:#123c2f;margin:0;}
+.admin-alerts-page .alert-message{color:#465d52;line-height:1.8;margin:0;}
+.admin-alerts-page .alert-meta{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px;}
+
+.admin-alerts-page .badge-severity{
+    background:var(--alertColor,#2e7d32);
+    color:#fff;
+    border-radius:999px;
+    padding:7px 12px;
+    font-weight:1000;
+    white-space:nowrap;
+}
+
+.admin-structured-page .alert-soft{
+    background:#eef7f2;
+    color:#123c2f;
+    border:1px solid #cfe3d7;
+    border-right:6px solid #1b5e20;
+    border-radius:16px;
+    padding:12px 14px;
+    margin-bottom:16px;
+    font-weight:900;
+}
+
+.admin-structured-page .badge-geo{
+    display:inline-block;
+    background:#eef7f2;
+    color:#123c2f;
+    border:1px solid #dce8e2;
+    border-radius:999px;
+    padding:5px 9px;
+    margin:2px;
+    font-weight:900;
+    direction:ltr;
+}
+
+.admin-structured-page .badge-benefit,
+.admin-structured-page .badge-rare,
+.admin-structured-page .badge-toxic,
+.admin-structured-page .badge-harmful,
+.admin-structured-page .badge-disease{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:999px;
+    padding:7px 12px;
+    font-weight:1000;
+}
+.admin-structured-page .badge-benefit{background:#e8f5e9;color:#1b5e20;}
+.admin-structured-page .badge-rare{background:#e3f2fd;color:#0d47a1;}
+.admin-structured-page .badge-toxic{background:#fff8e1;color:#8a5a00;}
+.admin-structured-page .badge-harmful{background:#ffebee;color:#b71c1c;}
+.admin-structured-page .badge-disease{background:#f3e5f5;color:#4a148c;}
+
+.admin-structured-page .btn-edit,
+.admin-structured-page .btn-delete,
+.admin-structured-page .btn-view{
+    width:36px;
+    height:36px;
+    border:0;
+    border-radius:12px;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    text-decoration:none;
+    margin:2px;
+    cursor:pointer;
+}
+.admin-structured-page .btn-edit{background:#e3f2fd;color:#0d47a1;}
+.admin-structured-page .btn-delete{background:#ffebee;color:#b71c1c;}
+.admin-structured-page .btn-view{background:#e8f5e9;color:#1b5e20;}
+
+.admin-structured-page .modal{backdrop-filter:blur(2px);}
+.admin-structured-page .modal-content-custom h4,
+.admin-structured-page .modal-card h4{color:#123c2f;font-weight:1000;}
+
+.admin-structured-page .no-data,
+.admin-structured-page .empty-state{
+    background:#fff;
+    border:1px dashed #cfe3d7;
+    border-radius:18px;
+    color:#60756a;
+    font-weight:900;
+    padding:24px;
+    text-align:center;
+}
+
+.admin-reports-page .report-card{
+    background:#fff;
+    border:1px solid var(--admin-border);
+    border-radius:22px;
+    padding:18px;
+    box-shadow:var(--shadow-soft);
+}
+
+.admin-reports-page .report-actions,
+.admin-reports-page .report-controls{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+    margin-bottom:16px;
+}
+
+@media(max-width:992px){
+    .admin-alerts-page .summary-grid,
+    .admin-alerts-page .alerts-summary{grid-template-columns:1fr 1fr;}
+}
+
+@media(max-width:650px){
+    .admin-structured-page .page-head,
+    .admin-structured-page .dashboard-hero,
+    .admin-structured-page .alerts-hero,
+    .admin-structured-page .report-hero{align-items:flex-start;}
+    .admin-alerts-page .summary-grid,
+    .admin-alerts-page .alerts-summary{grid-template-columns:1fr;}
+    .admin-structured-page .btn-soft,
+    .admin-structured-page .btn-admin-action{width:100%;}
+}

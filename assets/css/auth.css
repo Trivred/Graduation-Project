@@ -1,0 +1,223 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap');
+
+:root{--green:#1B5E20;--green2:#43a047;--dark:#0f2d18;--soft:#eef8ef;--danger:#d32f2f;--text:#12351f;}
+*{box-sizing:border-box;}
+body{margin:0;font-family:'Cairo',sans-serif;background:linear-gradient(135deg,#07190d,#1B5E20 52%,#e8f5e9 52%);min-height:100vh;color:var(--text);}
+.auth-page{min-height:100vh;display:grid;grid-template-columns:1.05fr .95fr;align-items:stretch;}
+.auth-hero{color:#fff;padding:70px 56px;display:flex;align-items:center;position:relative;overflow:hidden;}
+.auth-hero::before,.auth-hero::after{content:"";position:absolute;border-radius:50%;background:rgba(255,255,255,.08);}
+.auth-hero::before{width:320px;height:320px;top:-90px;left:-70px;}
+.auth-hero::after{width:420px;height:420px;right:-130px;bottom:-150px;}
+.auth-hero-content{position:relative;z-index:2;max-width:560px;}
+.auth-logo{width:98px;height:98px;border-radius:26px;background:#fff;padding:9px;object-fit:cover;box-shadow:0 18px 45px rgba(0,0,0,.25);margin-bottom:22px;}
+.auth-hero h1{font-size:44px;line-height:1.35;margin:0 0 15px;font-weight:900;}
+.auth-hero p{font-size:17px;line-height:2;opacity:.92;margin:0;}
+.auth-features{display:grid;gap:12px;margin-top:28px;}
+.auth-feature{display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.16);border-radius:17px;padding:12px 16px;font-weight:800;}
+.auth-panel{padding:48px 38px;display:flex;align-items:center;justify-content:center;}
+.auth-card{width:min(480px,100%);background:rgba(255,255,255,.96);backdrop-filter:blur(12px);box-shadow:0 30px 70px rgba(0,0,0,.15);border-radius:30px;padding:30px;border:1px solid rgba(27,94,32,.08);}
+.auth-top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:18px;}
+.auth-top h2{margin:0;color:var(--green);font-size:28px;font-weight:900;}
+.lang-switch{display:flex;background:#eaf5eb;border-radius:999px;padding:3px;gap:3px;}
+.lang-switch a{text-decoration:none;color:var(--green);font-weight:900;padding:6px 10px;border-radius:999px;}
+.lang-switch a.active{background:var(--green);color:#fff;}
+.tabs{display:grid;grid-template-columns:1fr 1fr;background:#edf7ee;border-radius:18px;padding:5px;margin-bottom:22px;}
+.tab{border:none;background:transparent;border-radius:14px;padding:12px;font-family:inherit;font-weight:900;cursor:pointer;color:#45614d;}
+.tab.active{background:#fff;color:var(--green);box-shadow:0 8px 20px rgba(0,0,0,.07);}
+.form{display:none;animation:fade .25s ease;}
+.form.active{display:block;}
+@keyframes fade{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:translateY(0);}}
+.form-group{margin-bottom:14px;}
+.form-group label{display:block;font-weight:900;color:var(--green);margin-bottom:7px;}
+.input-wrap{position:relative;}
+.input-wrap > i{position:absolute;right:14px;top:50%;transform:translateY(-50%);color:#65896b;}
+.input-wrap input,.input-wrap select{width:100%;border:1px solid #d9eadb;border-radius:15px;padding:13px 43px 13px 14px;font-family:inherit;outline:none;background:#fff;color:var(--text);}
+.input-wrap select{appearance:none;}
+.input-wrap input:focus,.input-wrap select:focus{border-color:var(--green2);box-shadow:0 0 0 4px rgba(67,160,71,.12);}
+.password-toggle{position:absolute;left:10px;top:50%;transform:translateY(-50%);border:none;background:transparent;color:#4c7453;cursor:pointer;font-size:18px;}
+.auth-btn{width:100%;border:none;border-radius:16px;background:linear-gradient(135deg,var(--green2),var(--green));color:#fff;padding:14px 16px;font-family:inherit;font-weight:900;font-size:15px;cursor:pointer;display:flex;justify-content:center;align-items:center;gap:8px;transition:.2s ease;}
+.auth-btn:hover{transform:translateY(-2px);box-shadow:0 14px 28px rgba(27,94,32,.18);}
+.alert{padding:12px 14px;border-radius:14px;margin-bottom:16px;font-weight:800;line-height:1.7;}
+.alert-danger{background:#fdeaea;color:#b42318;border:1px solid #fac5c5;}
+.alert-success{background:#e8f5e9;color:#1B5E20;border:1px solid #c8e6c9;}
+.form-links{text-align:center;margin-top:14px;}
+.form-links a{color:var(--green);font-weight:900;text-decoration:none;}
+@media(max-width:950px){body{background:linear-gradient(135deg,#0f2d18,#e8f5e9);} .auth-page{grid-template-columns:1fr;} .auth-hero{padding:35px 20px;} .auth-hero h1{font-size:30px;} .auth-panel{padding:20px;} }
+.role-switch{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:10px;
+    margin:8px 0 14px;
+}
+.role-switch label{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    border:1px solid #d9eadc;
+    background:#f8fbf7;
+    border-radius:14px;
+    padding:10px;
+    font-weight:800;
+    color:#23432a;
+}
+.role-switch input{accent-color:#2f7d32;}
+/* الوضع العربي */
+.lang-ar .auth-hero h1,
+.lang-ar .auth-hero p{
+    color:#1B5E20; /* أخضر */
+}
+
+/* ممكن تخففين الخلفية عشان يوضح أكثر */
+.lang-ar .auth-hero{
+    background:linear-gradient(rgba(255,255,255,0.7),rgba(255,255,255,0.7)),
+    url('../img/your-image.jpg');
+    background-size:cover;
+}
+.auth-hero{
+    background-image: url('../img/your-image.jpg') !important;
+    background-size:cover;
+    background-position:center;
+}
+
+.auth-hero::before,
+.auth-hero::after{
+    display:none !important;
+}
+
+
+/* إصلاح مكان أيقونة إظهار/إخفاء كلمة المرور */
+.input-wrap {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+/* مساحة للأيقونة الأساسية + العين */
+.input-wrap input {
+    width: 100%;
+    box-sizing: border-box;
+    padding-inline-start: 42px;
+    padding-inline-end: 42px;
+}
+
+/* الأيقونة الأساسية داخل الحقل */
+.input-wrap > i:not(.password-toggle i) {
+    position: absolute;
+    inset-inline-start: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #6b8f7a;
+    font-size: 16px;
+    z-index: 2;
+    pointer-events: none;
+}
+
+/* زر العين داخل الإطار */
+.password-toggle {
+    position: absolute;
+    inset-inline-end: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 28px !important;
+    height: 28px !important;
+    min-width: 28px !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    border: 0 !important;
+    border-radius: 50%;
+    background: transparent !important;
+    box-shadow: none !important;
+    color: #386b54;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 3;
+}
+
+/* منع تأثير hover العام على زر العين */
+.password-toggle:hover,
+.password-toggle:focus,
+.password-toggle:active {
+    background: rgba(45, 106, 79, 0.08) !important;
+    box-shadow: none !important;
+    transform: translateY(-50%) !important;
+    outline: none;
+}
+
+.password-toggle i {
+    font-size: 15px;
+    line-height: 1;
+}
+
+/* Final password field icon fix: prevents the lock icon and eye button from overlapping. */
+.input-wrap {
+    position: relative;
+}
+.input-wrap > i {
+    position: absolute !important;
+    inset-inline-start: 14px !important;
+    inset-inline-end: auto !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    color: #5f7f68 !important;
+    font-size: 17px !important;
+    z-index: 2 !important;
+    pointer-events: none !important;
+}
+.password-toggle {
+    position: absolute !important;
+    inset-inline-end: 12px !important;
+    inset-inline-start: auto !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    width: 30px !important;
+    height: 30px !important;
+    min-width: 30px !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    border: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    color: #386b54 !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    z-index: 4 !important;
+    line-height: 1 !important;
+}
+.password-toggle i {
+    position: static !important;
+    inset: auto !important;
+    transform: none !important;
+    display: block !important;
+    font-size: 17px !important;
+    line-height: 1 !important;
+    color: inherit !important;
+    pointer-events: none !important;
+}
+.input-wrap input[type="password"],
+.input-wrap input[type="text"]#loginPassword,
+.input-wrap input[type="text"]#signupPassword,
+.input-wrap input[type="text"]#confirmPassword {
+    padding-inline-start: 46px !important;
+    padding-inline-end: 50px !important;
+}
+html[dir="ltr"] .input-wrap > i {
+    left: 14px !important;
+    right: auto !important;
+}
+html[dir="ltr"] .password-toggle {
+    right: 12px !important;
+    left: auto !important;
+}
+html[dir="rtl"] .input-wrap > i {
+    right: 14px !important;
+    left: auto !important;
+}
+html[dir="rtl"] .password-toggle {
+    left: 12px !important;
+    right: auto !important;
+}

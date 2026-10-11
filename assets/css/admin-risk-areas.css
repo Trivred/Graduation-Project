@@ -1,0 +1,536 @@
+.admin-risk-areas-page,
+.admin-risk-areas-page * {
+    box-sizing: border-box;
+}
+
+.admin-risk-areas-page {
+    direction: rtl;
+    padding: 24px;
+    background: #f4f7f5;
+    min-height: 100vh;
+    overflow: visible !important;
+}
+
+.admin-risk-areas-page .page-hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+    margin-bottom: 22px;
+    padding: 22px;
+    border-radius: 24px;
+    background: linear-gradient(135deg, #064e3b, #16a34a);
+    color: #ffffff;
+    box-shadow: 0 18px 40px rgba(6, 78, 59, 0.20);
+}
+
+.admin-risk-areas-page .page-hero h3 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0 0 8px;
+    font-size: 25px;
+    font-weight: 900;
+}
+
+.admin-risk-areas-page .page-hero p {
+    margin: 0;
+    max-width: 780px;
+    color: rgba(255, 255, 255, 0.88);
+    line-height: 1.8;
+    font-size: 14px;
+}
+
+.admin-risk-areas-page .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+}
+
+.admin-risk-areas-page .btn-soft {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 42px;
+    padding: 0 16px;
+    border: 0;
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.16);
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 800;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.admin-risk-areas-page .btn-soft:hover {
+    transform: translateY(-2px);
+    background: rgba(255, 255, 255, 0.24);
+    color: #ffffff;
+}
+
+.admin-risk-areas-page .stats {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(140px, 1fr));
+    gap: 14px;
+    margin-bottom: 18px;
+}
+
+.admin-risk-areas-page .stat-card {
+    padding: 16px 18px;
+    border: 1px solid #dbe8df;
+    border-radius: 20px;
+    background: #ffffff;
+    box-shadow: 0 12px 28px rgba(15, 23, 42, 0.06);
+}
+
+.admin-risk-areas-page .stat-card span {
+    display: block;
+    margin-bottom: 8px;
+    color: #64748b;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.admin-risk-areas-page .stat-card b {
+    color: #064e3b;
+    font-size: 26px;
+    font-weight: 950;
+}
+
+.admin-risk-areas-page .filter-bar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    padding: 14px;
+    border: 1px solid #dbe8df;
+    border-radius: 20px;
+    background: #ffffff;
+    box-shadow: 0 12px 28px rgba(15, 23, 42, 0.05);
+}
+
+.admin-risk-areas-page .search-box {
+    flex: 1 1 280px;
+    min-height: 44px;
+    padding: 0 16px;
+    border: 1px solid #d9e7dd;
+    border-radius: 14px;
+    outline: 0;
+    background: #f8faf8;
+    color: #0f172a;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.admin-risk-areas-page .search-box:focus {
+    border-color: #16a34a;
+    box-shadow: 0 0 0 4px rgba(22, 163, 74, 0.10);
+}
+
+.admin-risk-areas-page .filter-btn {
+    min-height: 42px;
+    padding: 0 15px;
+    border: 1px solid #d9e7dd;
+    border-radius: 14px;
+    background: #ffffff;
+    color: #334155;
+    font-size: 13px;
+    font-weight: 850;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.admin-risk-areas-page .filter-btn:hover,
+.admin-risk-areas-page .filter-btn.active {
+    border-color: #16a34a;
+    background: #dcfce7;
+    color: #166534;
+}
+
+.admin-risk-areas-page .widgets-grid {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fill, minmax(255px, 1fr));
+    gap: 18px;
+    align-items: start !important;
+    overflow: visible !important;
+}
+
+.admin-risk-areas-page .empty {
+    grid-column: 1 / -1;
+    padding: 28px;
+    border-radius: 20px;
+    background: #ffffff;
+    border: 1px dashed #b7d6c1;
+    color: #64748b;
+    text-align: center;
+    font-weight: 800;
+}
+
+.admin-risk-areas-page .widget-box {
+    position: relative;
+    display: flex !important;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+    height: auto !important;
+    min-height: 250px;
+    max-height: none !important;
+    padding: 18px 16px;
+    border: 1px solid #dce8e0;
+    border-right: 7px solid var(--riskColor, #16a34a);
+    border-radius: 20px;
+    background: #ffffff;
+    box-shadow: 0 16px 34px rgba(15, 23, 42, 0.08);
+    overflow: visible !important;
+    isolation: isolate;
+}
+
+.admin-risk-areas-page .widget-box.is-expanded {
+    grid-column: span 2;
+    z-index: 5;
+}
+
+.admin-risk-areas-page .widget-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin: 0;
+    color: #0f172a;
+    font-size: 16px;
+    font-weight: 950;
+    line-height: 1.4;
+}
+
+.admin-risk-areas-page .widget-title i {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: var(--riskColor, #16a34a);
+    color: #ffffff;
+    font-size: 12px;
+    flex: 0 0 auto;
+}
+
+.admin-risk-areas-page .badge-risk {
+    align-self: flex-start;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 32px;
+    padding: 0 13px;
+    border-radius: 999px;
+    background: var(--riskColor, #16a34a);
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: 950;
+}
+
+.admin-risk-areas-page .risk-progress {
+    width: 100%;
+    height: 7px;
+    overflow: hidden;
+    border-radius: 999px;
+    background: #e5e7eb;
+}
+
+.admin-risk-areas-page .risk-progress span {
+    display: block;
+    width: var(--riskPercent, 0%);
+    height: 100%;
+    border-radius: inherit;
+    background: var(--riskColor, #16a34a);
+}
+
+.admin-risk-areas-page .stats-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+}
+
+.admin-risk-areas-page .stat-mini {
+    min-height: 62px;
+    padding: 10px 6px;
+    border: 1px solid #dbe6ee;
+    border-radius: 13px;
+    background: #f8fafc;
+    color: #94a3b8;
+    text-align: center;
+    font-size: 10px;
+    font-weight: 850;
+}
+
+.admin-risk-areas-page .stat-mini span {
+    display: block;
+    margin-top: 6px;
+    color: #0f172a;
+    font-size: 12px;
+    font-weight: 950;
+}
+
+.admin-risk-areas-page .details-btn {
+    width: 100%;
+    min-height: 42px;
+    margin-top: auto;
+    border: 0;
+    border-radius: 14px;
+    background: #ecfdf5;
+    color: #064e3b;
+    font-size: 14px;
+    font-weight: 950;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.admin-risk-areas-page .details-btn:hover,
+.admin-risk-areas-page .details-btn.is-open {
+    background: #16a34a;
+    color: #ffffff;
+}
+
+.admin-risk-areas-page .details-box[hidden] {
+    display: none !important;
+}
+
+.admin-risk-areas-page .details-box {
+    order: 20;
+    display: none !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: auto !important;
+    max-height: none !important;
+    margin-top: 4px;
+    padding-top: 12px;
+    border-top: 1px solid #e5efe8;
+    overflow: visible !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+.admin-risk-areas-page .details-box.is-open {
+    display: block !important;
+}
+
+.admin-risk-areas-page .details-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+    width: 100%;
+    overflow: visible !important;
+}
+
+.admin-risk-areas-page .detail-card {
+    display: block !important;
+    height: auto !important;
+    min-height: 70px;
+    max-height: none !important;
+    padding: 12px;
+    border: 1px solid #dce8e0;
+    border-radius: 14px;
+    background: #f8faf8;
+    color: #334155;
+    line-height: 1.8;
+    font-size: 12px;
+    font-weight: 750;
+    overflow: visible !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+.admin-risk-areas-page .detail-card b {
+    color: #064e3b;
+    font-size: 12px;
+    font-weight: 950;
+}
+
+.admin-risk-areas-page .detail-card-wide,
+.admin-risk-areas-page .solution {
+    grid-column: 1 / -1;
+}
+
+.admin-risk-areas-page .solution ul {
+    margin: 8px 0 0;
+    padding: 0 18px 0 0;
+}
+
+.admin-risk-areas-page .solution li {
+    margin-bottom: 6px;
+}
+
+@media (max-width: 1200px) {
+    .admin-risk-areas-page .stats {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 900px) {
+    .admin-risk-areas-page {
+        padding: 16px;
+    }
+
+    .admin-risk-areas-page .page-hero {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .admin-risk-areas-page .stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .admin-risk-areas-page .widget-box.is-expanded {
+        grid-column: span 1;
+    }
+}
+
+@media (max-width: 640px) {
+    .admin-risk-areas-page .stats,
+    .admin-risk-areas-page .widgets-grid,
+    .admin-risk-areas-page .details-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .admin-risk-areas-page .stats-row {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .admin-risk-areas-page .hero-actions,
+    .admin-risk-areas-page .btn-soft {
+        width: 100%;
+    }
+}
+/* ===== Update: working danger-area filters/search ===== */
+.admin-risk-areas-page .filter-action-btn {
+    min-height: 42px;
+    padding: 0 18px;
+    border: 0;
+    border-radius: 14px;
+    background: #064e3b;
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: 900;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.admin-risk-areas-page .filter-action-btn:hover {
+    transform: translateY(-1px);
+    background: #166534;
+}
+
+.admin-risk-areas-page .filter-action-btn.reset {
+    background: #eef2f7;
+    color: #334155;
+}
+
+.admin-risk-areas-page .filter-action-btn.reset:hover {
+    background: #e2e8f0;
+}
+
+.admin-risk-areas-page .filter-result-note {
+    margin: -8px 0 18px;
+    padding: 11px 14px;
+    border: 1px solid #dbe8df;
+    border-radius: 16px;
+    background: #ffffff;
+    color: #475569;
+    font-size: 13px;
+    font-weight: 800;
+}
+
+.admin-risk-areas-page .empty-filter {
+    display: block;
+}
+
+.admin-risk-areas-page .empty-filter[hidden] {
+    display: none !important;
+}
+
+@media (max-width: 640px) {
+    .admin-risk-areas-page .filter-action-btn,
+    .admin-risk-areas-page .filter-btn,
+    .admin-risk-areas-page .search-box {
+        width: 100%;
+        flex: 1 1 100%;
+    }
+}
+
+/* Filter fix: .widget-box كان فيه display:flex !important، لذلك الإخفاء العادي لا يعمل. */
+.admin-risk-areas-page .risk-card-hidden,
+.admin-risk-areas-page .widget-box.risk-card-hidden,
+.admin-risk-areas-page [data-risk-card].risk-card-hidden,
+.admin-risk-areas-page .widget-box[hidden] {
+    display: none !important;
+}
+
+.admin-risk-areas-page #riskNoResults[hidden],
+.admin-risk-areas-page #riskNoResults.risk-card-hidden {
+    display: none !important;
+}
+
+/* ===== Final force fix: فلترة كروت المناطق الخطرة ===== */
+.admin-risk-areas-page .filter-action-btn {
+    min-height: 42px;
+    padding: 0 18px;
+    border: 0;
+    border-radius: 14px;
+    background: #064e3b;
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: 900;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.admin-risk-areas-page .filter-action-btn:hover {
+    transform: translateY(-1px);
+    background: #166534;
+}
+
+.admin-risk-areas-page .filter-action-btn.reset {
+    background: #eef2f7;
+    color: #334155;
+}
+
+.admin-risk-areas-page .filter-action-btn.reset:hover {
+    background: #e2e8f0;
+}
+
+.admin-risk-areas-page .filter-result-note {
+    margin: -8px 0 18px;
+    padding: 11px 14px;
+    border: 1px solid #dbe8df;
+    border-radius: 16px;
+    background: #ffffff;
+    color: #475569;
+    font-size: 13px;
+    font-weight: 800;
+}
+
+.admin-risk-areas-page .risk-card-hidden,
+.admin-risk-areas-page .widget-box.risk-card-hidden,
+.admin-risk-areas-page [data-risk-card].risk-card-hidden,
+.admin-risk-areas-page .widget-box[hidden],
+.admin-risk-areas-page [data-risk-card][hidden] {
+    display: none !important;
+}
+
+.admin-risk-areas-page #riskNoResults[hidden] {
+    display: none !important;
+}
+
+@media (max-width: 640px) {
+    .admin-risk-areas-page .filter-action-btn,
+    .admin-risk-areas-page .filter-btn,
+    .admin-risk-areas-page .search-box {
+        width: 100%;
+        flex: 1 1 100%;
+    }
+}

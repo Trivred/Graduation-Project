@@ -1,0 +1,409 @@
+/* ===== ROOT ===== */
+:root {
+    --main: #1b5e20;
+    --main-light: #2e7d32;
+    --accent: #66bb6a;
+    --bg: #f2f7f3;
+    --card: rgba(255,255,255,0.85);
+    --text: #1a1a1a;
+    --muted: #7a8a7a;
+}
+
+/* ===== BACKGROUND AI PLANT ===== */
+body {
+    position: relative;
+    background: #f2f7f3;
+    overflow-x: hidden;
+}
+
+/* طبقة نبات */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 500px;
+    height: 500px;
+
+    background: radial-gradient(circle at center,
+        rgba(102,187,106,0.25),
+        transparent 70%);
+
+    filter: blur(80px);
+    z-index: 0;
+}
+
+/* طبقة ثانية */
+body::after {
+    content: "";
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 400px;
+    height: 400px;
+
+    background: radial-gradient(circle at center,
+        rgba(46,125,50,0.15),
+        transparent 70%);
+
+    filter: blur(70px);
+    z-index: 0;
+}
+
+/* ===== CONTENT فوق الخلفية ===== */
+.page-wrapper,
+.dashboard-header,
+.stat-card,
+.table-card,
+.summary-card {
+    position: relative;
+    z-index: 1;
+}
+
+/* ===== CARDS (LEVEL PRO) ===== */
+.stat-card {
+    background: var(--card);
+    backdrop-filter: blur(10px);
+
+    border-radius: 26px;
+    padding: 26px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    border: 1px solid rgba(255,255,255,0.4);
+
+    box-shadow:
+        0 15px 40px rgba(0,0,0,0.06),
+        inset 0 1px 0 rgba(255,255,255,0.6);
+
+    transition: all 0.35s ease;
+}
+
+/* hover فخم */
+.stat-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow:
+        0 30px 60px rgba(0,0,0,0.1);
+}
+
+/* خط علوي */
+.stat-card::before {
+    content: "";
+    position: absolute;
+    height: 4px;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background: linear-gradient(to right, var(--accent), var(--main));
+}
+
+/* الرقم */
+.stat-card b {
+    font-size: 34px;
+    font-weight: 900;
+    color: var(--main);
+}
+
+/* النص */
+.stat-card span {
+    color: var(--muted);
+    font-size: 14px;
+}
+
+/* الايقونة */
+.stat-card .icon {
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+
+    background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
+    color: var(--main);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 22px;
+
+    box-shadow: inset 0 2px 5px rgba(255,255,255,0.5);
+}
+
+/* ===== BUTTONS ===== */
+.btn {
+    padding: 12px 18px;
+    border-radius: 16px;
+    font-size: 13px;
+    font-weight: 700;
+    transition: all 0.3s ease;
+}
+
+/* زر رئيسي */
+.btn.green {
+    background: linear-gradient(135deg, #2e7d32, #1b5e20);
+    color: #fff;
+
+    box-shadow:
+        0 10px 25px rgba(46,125,50,0.35),
+        inset 0 1px 0 rgba(255,255,255,0.2);
+}
+
+.btn.green:hover {
+    transform: translateY(-3px) scale(1.03);
+}
+
+/* زر ثانوي */
+.btn.light {
+    background: rgba(255,255,255,0.7);
+    border: 1px solid #d7ead8;
+
+    backdrop-filter: blur(8px);
+}
+
+.btn.light:hover {
+    background: #e8f5e9;
+}
+
+/* ===== TABLE ===== */
+.table-card {
+    background: var(--card);
+    backdrop-filter: blur(10px);
+
+    border-radius: 26px;
+    padding: 22px;
+
+    box-shadow:
+        0 20px 40px rgba(0,0,0,0.05);
+}
+
+/* الهيدر */
+.table th {
+    background: #f0f6f2;
+    font-weight: 700;
+    font-size: 14px;
+}
+
+/* الصفوف */
+.table td {
+    padding: 14px;
+    border-bottom: 1px solid #eee;
+}
+
+/* hover */
+.table tr:hover {
+    background: #f8fbf9;
+}
+
+/* ===== BADGES ===== */
+.badge-soft {
+    background: #e8f5e9;
+    color: var(--main);
+    padding: 6px 12px;
+    border-radius: 10px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+/* ===== SUMMARY ===== */
+.summary-card {
+    background: var(--card);
+    backdrop-filter: blur(8px);
+
+    border-radius: 24px;
+    padding: 22px;
+
+    box-shadow: 0 12px 30px rgba(0,0,0,0.05);
+}
+
+/* ===== GRID ===== */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 22px;
+    margin-top: 20px;
+}
+/* ===== FADE IN ===== */
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* تطبيق الانيميشن */
+.dashboard-header {
+    animation: fadeUp 0.6s ease;
+}
+
+.stat-card {
+    animation: fadeUp 0.7s ease;
+}
+
+.summary-card {
+    animation: fadeUp 0.8s ease;
+}
+
+.table-card {
+    animation: fadeUp 0.9s ease;
+}
+.stat-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    transition: 0.3s;
+}
+
+/* glow بسيط عند hover */
+.stat-card:hover::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 24px;
+    box-shadow: 0 0 25px rgba(102,187,106,0.2);
+}
+.dashboard-header {
+    backdrop-filter: blur(12px);
+}
+
+.table-card,
+.summary-card {
+    backdrop-filter: blur(8px);
+}
+
+
+
+/* ===============================
+   Admin Dashboard Welcome Header
+================================ */
+
+.admin-dashboard-page .admin-welcome-head {
+    margin-bottom: 22px;
+}
+
+.admin-dashboard-page .dashboard-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+    padding: 22px 24px;
+    border-radius: 24px;
+    background: linear-gradient(135deg, #ffffff 0%, #f1f8f4 55%, #e8f5ee 100%);
+    border: 1px solid rgba(45, 106, 79, 0.12);
+    box-shadow: 0 18px 45px rgba(16, 24, 40, 0.08);
+}
+
+.admin-dashboard-page .header-right {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.admin-dashboard-page .small-title {
+    display: inline-flex;
+    width: fit-content;
+    padding: 6px 12px;
+    border-radius: 999px;
+    background: rgba(45, 106, 79, 0.10);
+    color: #2d6a4f;
+    font-size: 13px;
+    font-weight: 800;
+}
+
+.admin-dashboard-page .header-right h2 {
+    margin: 0;
+    color: #123524;
+    font-size: 26px;
+    font-weight: 900;
+    line-height: 1.5;
+}
+
+.admin-dashboard-page .header-right h2 b {
+    color: #2d6a4f;
+}
+
+.admin-dashboard-page .header-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.admin-dashboard-page .dashboard-action {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 42px;
+    padding: 10px 16px;
+    border-radius: 14px;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 900;
+    line-height: 1;
+    white-space: nowrap;
+    border: 1px solid transparent;
+    transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
+}
+
+.admin-dashboard-page .dashboard-action i {
+    font-size: 18px;
+    line-height: 1;
+}
+
+.admin-dashboard-page .dashboard-action:hover {
+    transform: translateY(-2px);
+    text-decoration: none;
+}
+
+.admin-dashboard-page .action-green {
+    color: #ffffff;
+    background: linear-gradient(135deg, #1b4332, #2d6a4f);
+    box-shadow: 0 10px 22px rgba(45, 106, 79, 0.22);
+}
+
+.admin-dashboard-page .action-light {
+    color: #1b4332;
+    background: #ffffff;
+    border-color: rgba(45, 106, 79, 0.16);
+    box-shadow: 0 8px 18px rgba(16, 24, 40, 0.06);
+}
+
+.admin-dashboard-page .action-light:hover {
+    background: #f4fbf7;
+}
+
+@media (max-width: 992px) {
+    .admin-dashboard-page .dashboard-header {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .admin-dashboard-page .header-actions {
+        justify-content: flex-start;
+    }
+}
+
+@media (max-width: 576px) {
+    .admin-dashboard-page .dashboard-header {
+        padding: 18px;
+        border-radius: 20px;
+    }
+
+    .admin-dashboard-page .header-right h2 {
+        font-size: 20px;
+    }
+
+    .admin-dashboard-page .header-actions {
+        display: grid;
+        grid-template-columns: 1fr;
+        width: 100%;
+    }
+
+    .admin-dashboard-page .dashboard-action {
+        width: 100%;
+    }
+}
